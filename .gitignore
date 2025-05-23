@@ -1,0 +1,24 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Logs
+logs/
+*.log
+*.out
+
+# Docker
+*.env
+.env.*
+Dockerfile.*
+docker-compose.*
+/dist
+/tmp
+.dockerignore
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Testes (caso gere outputs temporários futuramente)
+coverage/
