@@ -1,24 +1,11 @@
 name: ci-node
-on: 
+on:
   pull_request:
     branches:
       - develop
   workflow_dispatch:
 jobs:
   check-app:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-      - name: Instala Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Instalar dependências
-        run: npm ci
-      - name: Rodar testes
-        run: node --test
-  check-app-to-v:
     strategy:
       matrix:
         version: ["20", "21", "22"]
@@ -34,3 +21,12 @@ jobs:
         run: npm ci
       - name: Rodar testes
         run: node --test
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build e push
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: lorenzo_alt/app-node:latest
