@@ -1,5 +1,8 @@
 name: ci-node
-on: [push]
+on: 
+  pull-request:
+    branches:
+      - develop
 jobs:
   check-app:
     runs-on: ubuntu-latest
