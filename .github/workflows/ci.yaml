@@ -1,8 +1,9 @@
 name: ci-node
 on: 
-  pull-request:
+  pull_request:
     branches:
       - develop
+  workflow_dispatch:
 jobs:
   check-app:
     runs-on: ubuntu-latest
